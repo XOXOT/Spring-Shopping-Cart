@@ -27,14 +27,14 @@ pipeline {
 
                 git credentialsId: 'XOXOT',
                     url: 'https://github.com/XOXOT/argoCD_yaml.git',
-                    branch: 'master'
+                    branch: 'main'
 
                 sh "sed -i 's/store:.*\$/store:${env.BUILD_NUMBER}/g' deploy_store.yaml"
                 sh "git add deploy_store.yaml"
                 sh "git commit -m '[UPDATE] store ${env.BUILD_NUMBER} image versioning'"
 
                 withCredentials([gitUsernamePassword(credentialsId: 'XOXOT')]) {
-                    sh "git push -u origin master"
+                    sh "git push -u origin main"
                 }
             }
             post {
