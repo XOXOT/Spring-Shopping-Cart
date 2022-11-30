@@ -11,7 +11,7 @@ pipeline {
             }
         }
         
-        stage("Push image to gcr") {
+        stage("Push image to AR") {
             steps {
                 script {
                     docker.withRegistry('https://asia.gcr.io', 'gcr:terraform-tae') {
