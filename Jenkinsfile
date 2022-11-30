@@ -14,7 +14,7 @@ pipeline {
         stage("Push image to AR") {
             steps {
                 script {
-                    docker.withRegistry('https://asia.gcr.io', 'jenkins-sa') {
+                    docker.withRegistry('https://asia.gcr.io', 'jenkins') {
                         app.push("${env.BUILD_NUMBER}")
                     }
                 }
