@@ -14,7 +14,7 @@ pipeline {
         stage("Push image to AR") {
             steps {
                 script {
-                    docker.withRegistry('https://asia.gcr.io', 'gcr:27a4cbd8-944e-4c01-aa24-40b2fd73e243') {
+                    docker.withRegistry('https://asia.gcr.io', 'gcr:terraform-tae') {
                         app.push("${env.BUILD_NUMBER}")
                     }
                 }
