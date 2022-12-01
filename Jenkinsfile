@@ -34,10 +34,10 @@ pipeline {
             steps {
 
                 git credentialsId: 'XOXOT',
-                    url: 'https://github.com/XOXOT/argoCD_yaml.git',
+                    url: 'https://github.com/XOXOT/argoCD_yaml/tree/main/deployment',
                     branch: 'main'
 
-                sh "sed -i 's/store:.*\$/store:${env.BUILD_NUMBER}/g' /deployment/deploy_store.yaml"
+                sh "sed -i 's/store:.*\$/store:${env.BUILD_NUMBER}/g' deploy_store.yaml"
                 sh "git add deploy_store.yaml"
                 sh "git commit -m '[UPDATE] store ${env.BUILD_NUMBER} image versioning'"
 
