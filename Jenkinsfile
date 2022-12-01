@@ -38,7 +38,7 @@ pipeline {
                     branch: 'main'
 
                 sh "sed -i 's/store:.*\$/store:${env.BUILD_NUMBER}/g' deployment/deploy_store.yaml"
-                sh "git add deploy_store.yaml"
+                sh "git add deployment/deploy_store.yaml"
                 sh "git commit -m '[UPDATE] store ${env.BUILD_NUMBER} image versioning'"
 
                 withCredentials([gitUsernamePassword(credentialsId: 'XOXOT')]) {
