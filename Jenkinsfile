@@ -3,12 +3,6 @@ pipeline {
         label 'dind-agent'
     }
     stages {
-        stage('Start') {
-            agent any
-            steps {
-                slackSend (channel: '#test', color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-            }
-        }
 
 
         stage('Build image') {
@@ -57,13 +51,6 @@ pipeline {
 
 
     }             
-    post {
-        success {
-            slackSend (channel: '#test', color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-        }
-        failure {
-            slackSend (channel: '#test', color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-        }
-    }
+
 
 }
